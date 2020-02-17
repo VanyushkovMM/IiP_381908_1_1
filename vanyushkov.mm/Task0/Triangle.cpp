@@ -18,7 +18,7 @@ int sign_cos(double x, double y, double z)
 int check(double x, double y, double z)
 {
 	if ((x < y + z) && (y < x + z) && (z < x + y))
-		return 1;
+		return 1; //Подверждение существования треугольника
 	else
 	{
 		std::cout << std::endl << "Такого треугольника не существует!" << std::endl;
