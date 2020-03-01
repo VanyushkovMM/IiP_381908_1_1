@@ -1,11 +1,11 @@
 #include <iostream>
 #include <clocale>
 
-//Определение косинуса угла
+//Определение типа угла
 int sign_cos(double x, double y, double z)
 {
 	double res;
-	res = (y * y + z * z - x * x) / (2 * y * z);
+	res = y * y + z * z - x * x;
 	if (res < 0)
 		return -1; //Угол тупой
 	else if (res == 0)
@@ -43,16 +43,16 @@ int main()
 {
 	setlocale(LC_CTYPE, "rus"); //Добавление кириллицы
 	double a, b, c; //Сторона треугольника
-	int aa, bb, cc; //Угол противолежащей стороны
+	int aa, bb, cc; //Тип угол противолежащей стороны
 
 	//Ввод сторон треугольника
 	do
 	{
 		std::cout << "Введите стороны треугольника: ";
 		std::cin >> a >> b >> c;
-	} while (!check(a, b, c));
+	} while (!check(a, b, c)); //Проверка на существование треугольника
 
-	//Определение косинуса угла
+	//Определение типа угла
 	aa = sign_cos(a, b, c);
 	bb = sign_cos(b, a, c);
 	cc = sign_cos(c, a, b);
