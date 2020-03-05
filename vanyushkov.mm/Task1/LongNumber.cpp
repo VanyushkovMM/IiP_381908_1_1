@@ -59,7 +59,7 @@ void LongNumber::Abs(const LongNumber& num)
 	low_part = num.low_part;
 }
 
-// Сложение чисел
+// Сложение 2 положительных чисел
 LongNumber LongNumber::Add(const LongNumber& num)
 {
 	LongNumber Result;
@@ -73,7 +73,7 @@ LongNumber LongNumber::Add(const LongNumber& num)
 	return Result;
 }
 
-// Разность чисел
+// Разность 2 положительных чисел
 LongNumber LongNumber::Sub(const LongNumber& num)
 {
 	LongNumber Result;
@@ -86,7 +86,7 @@ LongNumber LongNumber::Sub(const LongNumber& num)
 	return Result;
 }
 
-// Произведение чисел
+// Произведение 2 положительных чисел
 LongNumber LongNumber::Mul(const LongNumber& num)
 {
 	LongNumber Result, _num(num), tmp(*this); // _num = num, tmp = *this
@@ -132,7 +132,7 @@ LongNumber LongNumber::Mul(const LongNumber& num)
 	return Result;
 }
 
-// Частное числе
+// Частное 2 положительных чисел
 LongNumber LongNumber::Div(const LongNumber& num)
 {
 	LongNumber Result;
@@ -142,7 +142,7 @@ LongNumber LongNumber::Div(const LongNumber& num)
 	return Result;
 }
 
-// Остаток от деления
+// Остаток от деления 2 положительных чисел
 LongNumber LongNumber::Mod(const LongNumber& num)
 {
 	LongNumber Result = (*this) / num;
@@ -292,7 +292,13 @@ LongNumber LongNumber::operator/ (const LongNumber& num)
 // Оператор остатка от деления
 LongNumber LongNumber::operator% (const LongNumber& num)
 {
-	LongNumber* tmp = new LongNumber(this->Mod(num));
+	LongNumber x, _num;
+	x.Abs(*this);
+	_num.Abs(num);
+
+	LongNumber* tmp = new LongNumber(x.Mod(_num));
+	tmp->sign = sign * num.sign;
+
 	return *tmp;
 }
 

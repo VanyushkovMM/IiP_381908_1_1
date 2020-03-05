@@ -11,6 +11,22 @@ private:
 	uint low_part; // Младшая часть числа
 	int sign;      // Знак числа (1 или -1 -> '+' или '-')
 
+	// Используются для работы с положительными числами и вызываются только внутри класса
+	// Сложение 2 положительных чисел (вызывается через operator+ или operator- )
+	LongNumber Add(const LongNumber& num);
+
+	// Разность 2 положительных чисел (вызывается через operator+ или operator- )
+	LongNumber Sub(const LongNumber& num);
+
+	// Произведение 2 положительных чисел (вызывается через operator* )
+	LongNumber Mul(const LongNumber& num);
+
+	// Частное 2 положительных чисел (вызывается через operator/ )
+	LongNumber Div(const LongNumber& num);
+
+	// Остаток от деления положительных чисел (вызывается через operator% )
+	LongNumber Mod(const LongNumber& num);
+
 public:
 	// Конструктор по умолчанию
 	LongNumber();
@@ -26,21 +42,6 @@ public:
 
 	// Модуль числа
 	void Abs(const LongNumber& num);
-
-	// Сложение чисел
-	LongNumber Add(const LongNumber& num);
-
-	// Разность чисел
-	LongNumber Sub(const LongNumber& num);
-
-	// Произведение чисел
-	LongNumber Mul(const LongNumber& num);
-
-	// Частное числе
-	LongNumber Div(const LongNumber& num);
-
-	// Остаток от деления
-	LongNumber Mod(const LongNumber& num);
 
 	// Перегрузка операций ------------------------------------------
 
