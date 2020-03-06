@@ -196,7 +196,6 @@ LongNumber LongNumber::operator+ (const LongNumber& num)
 		_num->Abs(*_num);
 		LongNumber* x = new LongNumber(num);
 		LongNumber* tmp = new LongNumber(_num->Sub(*x));
-		//sign = -1;
 		tmp->sign = -1;
 		tmp->high_part *= -1;
 		return *tmp;
@@ -232,13 +231,14 @@ LongNumber LongNumber::operator- (const LongNumber& num)
 		}
 		else
 		{
-			LongNumber& x = *this;
-			x.sign = 1;
-			LongNumber* _num = new LongNumber(num);
-			(*_num).sign = 1;
+			LongNumber x;
+			x.Abs(*this);
+			LongNumber _num;
+			_num.Abs(num);
 
-			LongNumber* tmp = new LongNumber(x.Sub(*_num));
-			sign = -1;
+			LongNumber* tmp = new LongNumber(_num.Sub(x));
+			if (tmp->high_part < 0)
+				tmp->sign = -1;
 			if (tmp->low_part > 0)
 			{
 				tmp->high_part++;

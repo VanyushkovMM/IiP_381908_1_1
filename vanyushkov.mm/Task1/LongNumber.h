@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <iostream>
+#include <fstream>
 
 typedef unsigned int uint; // Беззнаковое целое (int)
 
