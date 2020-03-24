@@ -11,10 +11,11 @@ class Matrix
 	int size;    // Размер матрицы
 
 public:
-	Matrix();					  // По умолчанию
+	Matrix();                     // По умолчанию
 	Matrix(const Matrix& matrix); // Конструктор копирования
-	Matrix(int _size, ...);		  // Конструктор инициализации
-	~Matrix();					  // Деструктор
+	Matrix(int _size, ...);	      // Конструктор инициализации
+	~Matrix();                    // Деструктор
+
 	// Перегрузка операций ------------------------------------
 	// Оператор присваивания
 	Matrix& operator= (const Matrix& matrix);
@@ -41,16 +42,19 @@ public:
 	const Array& operator[] (const int index) const;
 
 	// Транспонирование
-	void Transpose();
+	Matrix Transpose();
+
+	// Заполнение матрицы размера _size одинаковыми значениями elem
+	void Fill(const int _size, const int elem);
+
+	// Изменение размера матрицы с сохранением элементов и заполнением elem нового пустого пространства
+	void ChangeSize(const int _size, const int elem);
 
 	// Изменение размера матрицы с сохранением элементов и заполнением нулями нового пустого пространства
 	void ChangeSize(const int _size);
 
 	// Единичная матрица размера _size
 	void Unix(const int _size);
-	
-	// Заполнение матрицы размера _size одинаковыми значениями elem
-	void Fill(const int _size, int elem);
 	
 	// Возвращение размера матрицы
 	friend int Size(const Matrix& matrix);

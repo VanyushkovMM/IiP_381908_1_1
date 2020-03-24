@@ -25,11 +25,7 @@ int& Array::operator[](const int index)
 {
     // Проверка выхода индекса за границу строки
     if (index < 0 || index >= size)
-    {
-        // Вызов ошибки
-        throw Exception(ExceptionType::outOfBoundsArray);
-        return array[0];
-    }
+        throw Exception(ExceptionType::outOfBoundsArray); // Вызов ошибки
     return array[index];
 }
 
@@ -38,10 +34,6 @@ const int& Array::operator[] (const int index) const
 {
     // Проверка выхода индекса за границу строки
     if (index < 0 || index >= size)
-    {
-        // Вызов ошибки
-        throw Exception(ExceptionType::outOfBoundsArray);
-        return array[0];
-    }
+        throw Exception(ExceptionType::outOfBoundsArray); // Вызов ошибки
     return array[index];
 }

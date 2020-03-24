@@ -34,9 +34,9 @@ int main()
 		std::cout << std::endl;
 		fout << std::endl;
 
-		c.Transpose();
-		std::cout << "Транспонирование: \n" << c << std::endl;
-		fout << c << std::endl;
+		c = a.Transpose();
+		std::cout << "Транспонирование: \n" << c << std::endl << a << std::endl;
+		fout << c << std::endl << a << std::endl;
 
 		c += a; // c = c + a;
 		std::cout << "c + a: \n" << c << std::endl;
@@ -58,8 +58,8 @@ int main()
 			std::cout << std::endl;
 		}
 
-		c.ChangeSize(7);
-		std::cout << "Изменение размера матрицы с сохранением элементов и заполнением новых числом 0: \n" << c << std::endl;
+		c.ChangeSize(7, 100);
+		std::cout << "Изменение размера матрицы с сохранением элементов и заполнением новых числом 100: \n" << c << std::endl;
 		fout << c << std::endl;
 
 		c.Fill(3, 100);

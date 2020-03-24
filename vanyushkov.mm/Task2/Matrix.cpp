@@ -18,7 +18,7 @@ Matrix::Matrix(int _size, ...)
 {
     va_list list;
     va_start(list, _size);
-    this->ChangeSize(_size);
+    this->ChangeSize(_size, 0);
     for (int i = 0; i < size; i++)
         for (int j = 0; j < size; j++)
         {
@@ -99,13 +99,7 @@ Matrix Matrix::operator* (const Matrix& matrix)
     if (size == matrix.size)
     {
         // Создание новой матрицы
-        result.size = size;
-        result.mtrx = new Array[size];
-        for (int i = 0; i < size; i++)
-        {
-            result.mtrx[i].size = size;
-            result.mtrx[i].array = new int[size];
-        }
+        result.Fill(size, 0);
         // Умножение матриц
         for (int i = 0; i < size; i++)
             for (int k = 0; k < size; k++)
@@ -130,23 +124,23 @@ Matrix& Matrix::operator*= (const Matrix& matrix)
 // Оператор умножения матрицы на скаляр
 Matrix Matrix::operator* (const int num)
 {
-    Matrix result = *this;
-    for (int i = 0; i < size; i++)
-        for (int j = 0; j < size; j++)
-            result.mtrx[i][j] *= num;
-    return result;
+    return num * (*this);
 }
 
 // Оператор умножение скаляра на матрицу
 Matrix operator* (const int num, Matrix& matrix)
 {
-    return matrix * num;
+    Matrix result = matrix;
+    for (int i = 0; i < result.size; i++)
+        for (int j = 0; j < result.size; j++)
+            result.mtrx[i][j] *= num;
+    return result;
 }
 
 // Оператор умножения на скаляр с присваиванием
 Matrix& Matrix::operator*= (const int num)
 {
-    *this = *this * num;
+    *this = num * (*this);
     return *this;
 }
 
@@ -155,11 +149,7 @@ Array& Matrix::operator[] (const int index)
 {
     // Проверка выхода индекса за границу столбца
     if (index < 0 || index >= size)
-    {
-        // Вызов ошибки
-        throw Exception(ExceptionType::outOfBoundsArray);
-        return mtrx[0];
-    }
+        throw Exception(ExceptionType::outOfBoundsArray); // Вызов ошибки
     return mtrx[index];
 }
 
@@ -168,77 +158,23 @@ const Array& Matrix::operator[] (const int index) const
 {
     // Проверка выхода индекса за границу строки
     if (index < 0 || index >= size)
-    {
-        // Вызов ошибки
-        throw Exception(ExceptionType::outOfBoundsArray);
-        return mtrx[0];
-    }
+        throw Exception(ExceptionType::outOfBoundsArray); // Вызов ошибки
     return mtrx[index];
 }
 
 // Транспонирование
-void Matrix::Transpose()
+Matrix Matrix::Transpose()
 {
-    Matrix tmp(*this);
+    Matrix result;
+    result.ChangeSize(size, 0);
     for (int i = 0; i < size; i++)
         for (int j = 0; j < size; j++)
-            this->mtrx[i][j] = tmp.mtrx[j][i];
-}
-
-// Изменение размера матрицы с сохранением элементов и заполнением нулями пустого пространства
-void Matrix::ChangeSize(const int _size)
-{
-    Matrix tmp;
-    int n = 0;
-    if (size > 0) // Проверка на существование матрицы
-    {
-        tmp = *this;   // Копирование матрицы
-        delete[] mtrx; // Очистка матрицы
-        // Запоминание матрицы для заполнения
-        n = size;
-        if (_size < n)
-            n = _size;
-    }
-    // Создание матрицы
-    size = _size;
-    mtrx = new Array[size];
-    for (int i = 0; i < size; i++)
-    {
-        mtrx[i].size = size;
-        mtrx[i].array = new int[size];
-        // Заполнение нулями
-        for (int j = 0; j < size; j++)
-            mtrx[i][j] = 0;
-    }
-    // Заполнение матрицы старыми элементами
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            mtrx[i][j] = tmp.mtrx[i][j];
-}
-
-// Единичная матрица размера _size
-void Matrix::Unix(const int _size)
-{
-    if (size > 0) // Проверка на существование матрицы
-        delete[] mtrx;
-    // Создание новой матрицы
-    size = _size;
-    mtrx = new Array[size];
-    for (int i = 0; i < size; i++)
-    {
-        mtrx[i].size = size;
-        mtrx[i].array = new int[size];
-        // Заполнение нулями
-        for (int j = 0; j < size; j++)
-            mtrx[i][j] = 0;
-    }
-    // Заполнение главной диагонали единицами
-    for (int i = 0; i < size; i++)
-        mtrx[i][i] = 1;
+            result.mtrx[j][i] = mtrx[i][j];
+    return result;
 }
 
 // Заполнение матрицы размера _size одинаковыми значениями elem
-void Matrix::Fill(const int _size, int elem)
+void Matrix::Fill(const int _size, const int elem)
 {
     if (size > 0) // Проверка на существование матрицы
         delete[] mtrx;
@@ -253,6 +189,35 @@ void Matrix::Fill(const int _size, int elem)
         for (int j = 0; j < size; j++)
             mtrx[i][j] = elem;
     }
+}
+
+// Изменение размера матрицы с сохранением элементов и заполнением elem пустого пространства
+void Matrix::ChangeSize(const int _size, const int elem)
+{
+    Matrix tmp = *this;
+    int n = size;
+    if (_size < n)
+        n = _size;
+    this->Fill(_size, elem);
+    // Заполнение матрицы старыми элементами
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            mtrx[i][j] = tmp.mtrx[i][j];
+}
+
+// Изменение размера матрицы с сохранением элементов и заполнением нулями пустого пространства
+void Matrix::ChangeSize(const int _size)
+{
+    this->ChangeSize(_size, 0);
+}
+
+// Единичная матрица размера _size
+void Matrix::Unix(const int _size)
+{
+    this->Fill(_size, 0);
+    // Заполнение главной диагонали единицами
+    for (int i = 0; i < size; i++)
+        mtrx[i][i] = 1;
 }
 
 // Возвращение размера матрицы
@@ -301,7 +266,7 @@ std::istream& operator>> (std::istream& stream, Matrix& matrix)
     int _size;
     stream >> _size;
     // Создание матрицы
-    matrix.ChangeSize(_size);
+    matrix.ChangeSize(_size, 0);
     for (int i = 0; i < matrix.size; i++)
         for (int j = 0; j < matrix.size; j++)
             stream >> matrix.mtrx[i][j];
