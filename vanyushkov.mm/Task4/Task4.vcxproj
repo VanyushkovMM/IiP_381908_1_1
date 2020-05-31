@@ -123,6 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Film.cpp" />
+    <ClCompile Include="FilmLibrary.cpp" />
+    <ClCompile Include="Task4.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Film.h" />
+    <ClInclude Include="FilmLibrary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

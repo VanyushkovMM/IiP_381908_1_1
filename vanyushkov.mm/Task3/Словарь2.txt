@@ -1,0 +1,29 @@
+28
+apple 1 яблоко 
+aunt 1 тётя 
+author 1 автор 
+background 1 фон 
+be 2 быть находиться 
+bullet 2 пуля ядро 
+car 1 машина 
+daughter 1 дочь 
+dictionary 1 словарь 
+engine 1 двигатель 
+evil 2 зло грех 
+fan 2 поклонник веер 
+father 1 папа 
+gold 1 золото 
+goodbye 1 пока 
+green 5 зеленый сырой свежий бледный неспелый 
+hello 3 алло привет здравствуйте 
+live 1 жить 
+machine 1 станок 
+mom 1 мама 
+mother 1 мама 
+orange 2 апельсин оранжевый 
+quantity 1 количество 
+right 2 верно право 
+sin 1 грех 
+sun 1 солнце 
+twins 2 двойняшки близнецы 
+uncle 1 дядя 
