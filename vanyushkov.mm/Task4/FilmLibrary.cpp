@@ -1,6 +1,6 @@
-#include "FilmLibrary.h"
+п»ї#include "FilmLibrary.h"
 
-// Сравнение 2 строк на алфавитный порядок
+// РЎСЂР°РІРЅРµРЅРёРµ 2 СЃС‚СЂРѕРє РЅР° Р°Р»С„Р°РІРёС‚РЅС‹Р№ РїРѕСЂСЏРґРѕРє
 bool __comparison(std::string str1, std::string str2)
 {
 	size_t len = str1.length();
@@ -20,14 +20,14 @@ bool __comparison(std::string str1, std::string str2)
 	return false;
 }
 
-// Переход в новую строку (считывание мусора)
+// РџРµСЂРµС…РѕРґ РІ РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ (СЃС‡РёС‚С‹РІР°РЅРёРµ РјСѓСЃРѕСЂР°)
 void __bin(std::istream& in)
 {
 	std::string bin;
 	std::getline(in, bin);
 }
 
-// По умолчанию
+// РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 FilmLibrary::FilmLibrary()
 {
 	bufsize = BUF;
@@ -35,13 +35,13 @@ FilmLibrary::FilmLibrary()
 	quantity = 0;
 }
 
-// Копирование
+// РљРѕРїРёСЂРѕРІР°РЅРёРµ
 FilmLibrary::FilmLibrary(const FilmLibrary& library)
 {
 	*this = library;
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 FilmLibrary::~FilmLibrary()
 {
 	bufsize = 0;
@@ -50,7 +50,7 @@ FilmLibrary::~FilmLibrary()
 	quantity = 0;
 }
 
-// Увеличивает размер буфера библиотеки 
+// РЈРІРµР»РёС‡РёРІР°РµС‚ СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР° Р±РёР±Р»РёРѕС‚РµРєРё 
 FilmLibrary& FilmLibrary::newBuf(const int buf)
 {
 	bufsize = buf;
@@ -60,7 +60,7 @@ FilmLibrary& FilmLibrary::newBuf(const int buf)
 	return *this;
 }
 
-// Присваивание
+// РџСЂРёСЃРІР°РёРІР°РЅРёРµ
 FilmLibrary& FilmLibrary::operator=(const FilmLibrary& library)
 {
 	if (*this == library)
@@ -73,7 +73,7 @@ FilmLibrary& FilmLibrary::operator=(const FilmLibrary& library)
 	return *this;
 }
 
-// Вывод списка фильмов на консоль
+// Р’С‹РІРѕРґ СЃРїРёСЃРєР° С„РёР»СЊРјРѕРІ РЅР° РєРѕРЅСЃРѕР»СЊ
 bool FilmLibrary::PrintLibrary()
 {
 	if (quantity == 0)
@@ -86,16 +86,16 @@ bool FilmLibrary::PrintLibrary()
 	return true;
 }
 
-// Добавление фильма в библиотеку
+// Р”РѕР±Р°РІР»РµРЅРёРµ С„РёР»СЊРјР° РІ Р±РёР±Р»РёРѕС‚РµРєСѓ
 bool FilmLibrary::AddFilm()
 {
 	Film film;
 	__bin(std::cin);
-	film.Read(); // Считывание информации о фильме
+	film.Read(); // РЎС‡РёС‚С‹РІР°РЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ
 	return this->AddFilm(film);
 }
 
-// Добавление фильма в библиотеку
+// Р”РѕР±Р°РІР»РµРЅРёРµ С„РёР»СЊРјР° РІ Р±РёР±Р»РёРѕС‚РµРєСѓ
 bool FilmLibrary::AddFilm(Film& film)
 {
 	if (quantity >= bufsize)
@@ -122,7 +122,7 @@ bool FilmLibrary::AddFilm(Film& film)
 	return true;
 }
 
-// Поиск позиции фильма для удаления или изменения данных
+// РџРѕРёСЃРє РїРѕР·РёС†РёРё С„РёР»СЊРјР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РёР»Рё РёР·РјРµРЅРµРЅРёСЏ РґР°РЅРЅС‹С…
 int FilmLibrary::search(const std::string comment, const std::string name)
 {
 	int f = -1;
@@ -132,20 +132,20 @@ int FilmLibrary::search(const std::string comment, const std::string name)
 			f = i;
 			break;
 		}
-	if (f == -1) // Если фильм не найден
+	if (f == -1) // Р•СЃР»Рё С„РёР»СЊРј РЅРµ РЅР°Р№РґРµРЅ
 		return f;
 	int l = f;
 	while (Name(films[l]) == name && l < quantity)
 		l++;
-	if (l - 1 != f) // Если есть несколько фильмов с одинаковым названием
+	if (l - 1 != f) // Р•СЃР»Рё РµСЃС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ С„РёР»СЊРјРѕРІ СЃ РѕРґРёРЅР°РєРѕРІС‹Рј РЅР°Р·РІР°РЅРёРµРј
 	{
-		std::cout << "Выберите фильм, который хотите " << comment << ":\n";
+		std::cout << "Р’С‹Р±РµСЂРёС‚Рµ С„РёР»СЊРј, РєРѕС‚РѕСЂС‹Р№ С…РѕС‚РёС‚Рµ " << comment << ":\n";
 		for (int i = f; i < l - 1; i++)
-			std::cout << "\nФильм " << i - f + 1 << ":\n" << films[i];
+			std::cout << "\nР¤РёР»СЊРј " << i - f + 1 << ":\n" << films[i];
 		int x = 0;
 		while (x < 1 || x > l - f - 1)
 		{
-			std::cout << "\nВведите номер: ";
+			std::cout << "\nР’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ: ";
 			std::cin >> x;
 		}
 		f += x - 1;
@@ -153,21 +153,21 @@ int FilmLibrary::search(const std::string comment, const std::string name)
 	return f;
 }
 
-// Изменить данные фильма
+// РР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ С„РёР»СЊРјР°
 bool FilmLibrary::ChangeFilm(const std::string name)
 {
-	int f = this->search("изменить", name);
+	int f = this->search("РёР·РјРµРЅРёС‚СЊ", name);
 	if (f == -1)
 		return false;
 	films[f].Write();
 	std::cout << std::endl;
-	std::cout << "Введите новую информацию или оставьте строчку пустой: \n";
+	std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РёР»Рё РѕСЃС‚Р°РІСЊС‚Рµ СЃС‚СЂРѕС‡РєСѓ РїСѓСЃС‚РѕР№: \n";
 	films[f].Read();
 	insert(f);
 	return true;
 }
 
-// Поиск фильма 
+// РџРѕРёСЃРє С„РёР»СЊРјР° 
 Film FilmLibrary::SearchFilm(const std::string name, const int year)
 {
 	for (int i = 0; i < quantity; i++)
@@ -180,10 +180,10 @@ Film FilmLibrary::SearchFilm(const std::string name, const int year)
 				return films[p];
 			break;
 		}
-	return Film(); // Если фильм не найден, возвращается пустая информация
+	return Film(); // Р•СЃР»Рё С„РёР»СЊРј РЅРµ РЅР°Р№РґРµРЅ, РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ РїСѓСЃС‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
 }
 
-// Поиск списка фильмов по Режиссеру или Году
+// РџРѕРёСЃРє СЃРїРёСЃРєР° С„РёР»СЊРјРѕРІ РїРѕ Р РµР¶РёСЃСЃРµСЂСѓ РёР»Рё Р“РѕРґСѓ
 FilmLibrary FilmLibrary::__listfilms(const std::string producer, const int year)
 {
 	FilmLibrary library;
@@ -193,19 +193,19 @@ FilmLibrary FilmLibrary::__listfilms(const std::string producer, const int year)
 	return library;
 }
 
-// Поиск фильмов указанного режиссера
+// РџРѕРёСЃРє С„РёР»СЊРјРѕРІ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЂРµР¶РёСЃСЃРµСЂР°
 FilmLibrary FilmLibrary::ProducerFilms(const std::string producer)
 {
 	return __listfilms(producer, 0);
 }
 
-// Поиск фильмов по году
+// РџРѕРёСЃРє С„РёР»СЊРјРѕРІ РїРѕ РіРѕРґСѓ
 FilmLibrary FilmLibrary::YearFilms(const int year)
 {
 	return __listfilms("", year);
 }
 
-// Добавление фильмов, отсортированных по сборам
+// Р”РѕР±Р°РІР»РµРЅРёРµ С„РёР»СЊРјРѕРІ, РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹С… РїРѕ СЃР±РѕСЂР°Рј
 FilmLibrary& FilmLibrary::sortAndAdd(const FilmLibrary& library, ll* mas, const int _size, const int numbers)
 {
 	library.fundsort(mas, 0, _size - 1);
@@ -218,7 +218,7 @@ FilmLibrary& FilmLibrary::sortAndAdd(const FilmLibrary& library, ll* mas, const 
 	return *this;
 }
 
-// Список самых кассовых фильмов
+// РЎРїРёСЃРѕРє СЃР°РјС‹С… РєР°СЃСЃРѕРІС‹С… С„РёР»СЊРјРѕРІ
 FilmLibrary FilmLibrary::FundFilms(const int numbers)
 {
 	FilmLibrary library;
@@ -229,7 +229,7 @@ FilmLibrary FilmLibrary::FundFilms(const int numbers)
 	return library.sortAndAdd(*this, mas, quantity, numbers);
 }
 
-// Список самых кассовых фильмов за указанный год
+// РЎРїРёСЃРѕРє СЃР°РјС‹С… РєР°СЃСЃРѕРІС‹С… С„РёР»СЊРјРѕРІ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РіРѕРґ
 FilmLibrary FilmLibrary::FundYearFilms(const int numbers, const int year)
 {
 	FilmLibrary library;
@@ -243,16 +243,16 @@ FilmLibrary FilmLibrary::FundYearFilms(const int numbers, const int year)
 	return library;
 }
 
-// Возврат количества фильмов в библиотеке
+// Р’РѕР·РІСЂР°С‚ РєРѕР»РёС‡РµСЃС‚РІР° С„РёР»СЊРјРѕРІ РІ Р±РёР±Р»РёРѕС‚РµРєРµ
 int FilmLibrary::CountFilms()
 {
 	return quantity;
 }
 
-// Удаление фильма
+// РЈРґР°Р»РµРЅРёРµ С„РёР»СЊРјР°
 bool FilmLibrary::DeleteFilm(const std::string name)
 {
-	int f = this->search("удалить", name);
+	int f = this->search("СѓРґР°Р»РёС‚СЊ", name);
 	if (f == -1)
 		return false;
 	for (int i = f; i < quantity - 1; i++)
@@ -261,7 +261,7 @@ bool FilmLibrary::DeleteFilm(const std::string name)
 	return true;
 }
 
-// Считывание библиотеки с файла
+// РЎС‡РёС‚С‹РІР°РЅРёРµ Р±РёР±Р»РёРѕС‚РµРєРё СЃ С„Р°Р№Р»Р°
 void ReadFilms(FilmLibrary& library, const std::string str)
 {
 	std::ifstream fin(str);
@@ -277,7 +277,7 @@ void ReadFilms(FilmLibrary& library, const std::string str)
 	fin.close();
 }
 
-// Запись библиотеки в файл
+// Р—Р°РїРёСЃСЊ Р±РёР±Р»РёРѕС‚РµРєРё РІ С„Р°Р№Р»
 void SaveFilms(const FilmLibrary& library, const std::string str)
 {
 	std::ofstream fout(str);
@@ -287,7 +287,7 @@ void SaveFilms(const FilmLibrary& library, const std::string str)
 	fout.close();
 }
 
-// Расположение фильмов в алфавитном порядке
+// Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ С„РёР»СЊРјРѕРІ РІ Р°Р»С„Р°РІРёС‚РЅРѕРј РїРѕСЂСЏРґРєРµ
 void FilmLibrary::insert(int p)
 {
 	while (p > 0 && (__comparison(Name(films[p]), Name(films[p - 1])) 
@@ -314,7 +314,7 @@ bool FilmLibrary::operator==(const FilmLibrary& library)
 	return true;
 }
 
-// Сортировка по кассовым сборам
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РєР°СЃСЃРѕРІС‹Рј СЃР±РѕСЂР°Рј
 void FilmLibrary::fundsort(ll* mas, int first, int last) const
 {
 	int l = first, r = last;

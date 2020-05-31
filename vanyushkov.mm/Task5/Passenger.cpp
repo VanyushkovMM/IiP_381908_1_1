@@ -1,4 +1,4 @@
-#include "Passenger.h"
+ï»¿#include "Passenger.h"
 
 Passenger::Passenger(const std::string surname, const std::string name, const std::string patronymic)
 {
@@ -55,11 +55,11 @@ void Passenger::newSeatInfo(const int train, const std::string depTime, const st
 
 std::istream& operator>>(std::istream& stream, Passenger& passenger)
 {
-	std::cout << "Ôàìèëèÿ: ";
+	std::cout << "Ğ¤Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ: ";
 	stream >> passenger.surname;
-	std::cout << "Èìÿ: ";
+	std::cout << "Ğ˜Ğ¼Ñ: ";
 	stream >> passenger.name;
-	std::cout << "Îò÷åñòâî: ";
+	std::cout << "ĞÑ‚Ñ‡ĞµÑÑ‚Ğ²Ğ¾: ";
 	stream >> passenger.patronymic;
 
 	return stream;
@@ -67,17 +67,17 @@ std::istream& operator>>(std::istream& stream, Passenger& passenger)
 
 std::ostream& operator<<(std::ostream& stream, const Passenger& passenger)
 {
-	stream << "ÔÈÎ: " << passenger.surname << ' ' << passenger.name << ' ' << passenger.patronymic << '\n';
-	stream << "Ğåéñ: " << passenger.departure << " - " << passenger.arrival << '\n';
-	stream << "Äàòà îòïğàâëåíèÿ: " << passenger.date << '\n';
-	stream << "Âğåìÿ îòïğàâëåíèÿ: " << passenger.depTime << '\n';
-	stream << "Âğåìÿ ïğèáûòèÿ: " << passenger.arrTime << '\n';
-	stream << "Ïîåçä íîìåğ: " << passenger.train << '\n';
-	stream << "Âàãîí: " << passenger.carriage << '\n';
-	stream << "Ìåñòî: " << passenger.seat;
+	stream << "Ğ¤Ğ˜Ğ: " << passenger.surname << ' ' << passenger.name << ' ' << passenger.patronymic << '\n';
+	stream << "Ğ ĞµĞ¹Ñ: " << passenger.departure << " - " << passenger.arrival << '\n';
+	stream << "Ğ”Ğ°Ñ‚Ğ° Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ñ: " << passenger.date << '\n';
+	stream << "Ğ’Ñ€ĞµĞ¼Ñ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ñ: " << passenger.depTime << '\n';
+	stream << "Ğ’Ñ€ĞµĞ¼Ñ Ğ¿Ñ€Ğ¸Ğ±Ñ‹Ñ‚Ğ¸Ñ: " << passenger.arrTime << '\n';
+	stream << "ĞŸĞ¾ĞµĞ·Ğ´ Ğ½Ğ¾Ğ¼ĞµÑ€: " << passenger.train << '\n';
+	stream << "Ğ’Ğ°Ğ³Ğ¾Ğ½: " << passenger.carriage << '\n';
+	stream << "ĞœĞµÑÑ‚Ğ¾: " << passenger.seat;
 	if (passenger.typeCar == 0)
-		stream << " íèæíåå\n";
+		stream << " Ğ½Ğ¸Ğ¶Ğ½ĞµĞµ\n";
 	else
-		stream << "Âåğõíåå\n";
+		stream << "Ğ’ĞµÑ€Ñ…Ğ½ĞµĞµ\n";
 	return stream;
 }

@@ -1,9 +1,9 @@
-#include "Bulls_Cows.h"
+п»ї#include "Bulls_Cows.h"
 #include <Windows.h>
 #include <clocale>
 #include <iostream>
 
-// Очистка экрана
+// РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
 void clrscr()
 {
 	HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -40,10 +40,10 @@ int main()
 	{
 		do
 		{
-			std::cout << "Введите длину числа (1-10): ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РґР»РёРЅСѓ С‡РёСЃР»Р° (1-10): ";
 			std::cin >> len;
 		} while (!game.newNumber(len));
-		std::cout << "Число загадано!\n\n";
+		std::cout << "Р§РёСЃР»Рѕ Р·Р°РіР°РґР°РЅРѕ!\n\n";
 
 		int bull(0), cow(0);
 		std::string number;
@@ -53,20 +53,20 @@ int main()
 		{
 			do
 			{
-				std::cout << "Введите число: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
 				std::cin >> number;
 			} while (!game.checkCorrect(number));
 
 			attempt++;
 			end = game.checkBullCow(number, bull, cow);
-			std::cout << "Быков: " << bull << "\nКоров: " << cow << '\n';
+			std::cout << "Р‘С‹РєРѕРІ: " << bull << "\nРљРѕСЂРѕРІ: " << cow << '\n';
 
 		} while (!end);
 
-		std::cout << "\n    Вы выиграли!\n    Количество ходов: " << attempt << '\n' << "Новая игра - 0\nВыход - 1\n";
+		std::cout << "\n    Р’С‹ РІС‹РёРіСЂР°Р»Рё!\n    РљРѕР»РёС‡РµСЃС‚РІРѕ С…РѕРґРѕРІ: " << attempt << '\n' << "РќРѕРІР°СЏ РёРіСЂР° - 0\nР’С‹С…РѕРґ - 1\n";
 		do
 		{
-			std::cout << "Команда: ";
+			std::cout << "РљРѕРјР°РЅРґР°: ";
 			std::cin >> close;
 		} while (close < 0 || close > 1);
 		clrscr();

@@ -1,19 +1,19 @@
-#pragma once
+п»ї#pragma once
 #include "Film.h"
 
 constexpr int BUF = 50;
 
 class FilmLibrary
 {
-	Film* films;  // Фильмы
-	int quantity; // Количество фильмов
-	int bufsize;  // Буфер
+	Film* films;  // Р¤РёР»СЊРјС‹
+	int quantity; // РљРѕР»РёС‡РµСЃС‚РІРѕ С„РёР»СЊРјРѕРІ
+	int bufsize;  // Р‘СѓС„РµСЂ
 
 public:
-	FilmLibrary();                           // По умолчанию
-	FilmLibrary(const FilmLibrary& library); // Копирования
-	~FilmLibrary();                          // Деструктор
-	FilmLibrary& operator= (const FilmLibrary& library); // Присваивания
+	FilmLibrary();                           // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	FilmLibrary(const FilmLibrary& library); // РљРѕРїРёСЂРѕРІР°РЅРёСЏ
+	~FilmLibrary();                          // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
+	FilmLibrary& operator= (const FilmLibrary& library); // РџСЂРёСЃРІР°РёРІР°РЅРёСЏ
 
 	bool PrintLibrary();
 	bool AddFilm();
@@ -34,7 +34,7 @@ private:
 	FilmLibrary& newBuf(const int buf);
 	FilmLibrary __listfilms(const std::string producer, const int year);
 	int search(const std::string comment, const std::string name);
-	void fundsort(ll* mas, int first, int last) const; // Сортировка фильмов по сборам
+	void fundsort(ll* mas, int first, int last) const; // РЎРѕСЂС‚РёСЂРѕРІРєР° С„РёР»СЊРјРѕРІ РїРѕ СЃР±РѕСЂР°Рј
 	FilmLibrary& sortAndAdd(const FilmLibrary& library, ll* mas, const int _size, const int numbers);
 	void insert(int position);
 	bool operator== (const FilmLibrary& library);

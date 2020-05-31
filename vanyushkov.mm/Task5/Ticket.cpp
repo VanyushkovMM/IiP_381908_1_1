@@ -1,4 +1,4 @@
-#include "Ticket.h"
+ï»¿#include "Ticket.h"
 
 Ticket::Ticket(const int quantity, const Passenger* passenger)
 {
@@ -45,7 +45,7 @@ void Ticket::newPassengerInfo()
 	quantity = 0;
 	while (quantity <= 0)
 	{
-		std::cout << "Ââåäèòå êîëè÷åñòâî ïàññàæèðîâ: ";
+		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ð°ÑÑÐ°Ð¶Ð¸Ñ€Ð¾Ð²: ";
 		std::cin >> quantity;
 	}
 
@@ -88,10 +88,10 @@ bool Ticket::Print()
 {
 	if (quantity == 0)
 		return false;
-	std::cout << "Êîëè÷åñòâî áèëåòîâ: " << quantity << '\n';
+	std::cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð±Ð¸Ð»ÐµÑ‚Ð¾Ð²: " << quantity << '\n';
 	for (int i = 0; i < quantity; i++)
 		std::cout << passenger[i];
-	std::cout << "Îáùàÿ öåíà áèëåòîâ: " << price << "ð.\n";
+	std::cout << "ÐžÐ±Ñ‰Ð°Ñ Ñ†ÐµÐ½Ð° Ð±Ð¸Ð»ÐµÑ‚Ð¾Ð²: " << price << "Ñ€.\n";
 	return true;
 }
 

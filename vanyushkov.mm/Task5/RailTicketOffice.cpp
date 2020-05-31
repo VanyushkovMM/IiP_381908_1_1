@@ -1,4 +1,4 @@
-#include "RailTicketOffice.h"
+ï»¿#include "RailTicketOffice.h"
 
 void RailTicketOffice::clearTicket()
 {
@@ -23,13 +23,13 @@ void __info(const int x)
 	switch (x)
 	{
 	case 0: case 1: case 2:
-		std::cout << "Ëàñòî÷êà\n";
+		std::cout << "Ð›Ð°ÑÑ‚Ð¾Ñ‡ÐºÐ°\n";
 		break;
 	case 3:
-		std::cout << "Ôèðìåííûé\n";
+		std::cout << "Ð¤Ð¸Ñ€Ð¼ÐµÐ½Ð½Ñ‹Ð¹\n";
 		break;
 	case 4:
-		std::cout << "Ñêîðûé\n";
+		std::cout << "Ð¡ÐºÐ¾Ñ€Ñ‹Ð¹\n";
 		break;
 	}
 }
@@ -86,16 +86,16 @@ Ticket RailTicketOffice::newTicket()
 	int day = -1;
 	while (day < 0 || day > 29)
 	{
-		std::cout << "×åðåç ñêîëüêî äíåé âû ïëàíèðóåòå åõàòü(0 - ñåãîäíÿ, ìàêñèìóì - 29): "; // Ìîæíî óëó÷øèòü, äîáàâèâ îáðàáîòêó âðåìåíè
+		std::cout << "Ð§ÐµÑ€ÐµÐ· ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð´Ð½ÐµÐ¹ Ð²Ñ‹ Ð¿Ð»Ð°Ð½Ð¸Ñ€ÑƒÐµÑ‚Ðµ ÐµÑ…Ð°Ñ‚ÑŒ(0 - ÑÐµÐ³Ð¾Ð´Ð½Ñ, Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ - 29): "; // ÐœÐ¾Ð¶Ð½Ð¾ ÑƒÐ»ÑƒÑ‡ÑˆÐ¸Ñ‚ÑŒ, Ð´Ð¾Ð±Ð°Ð²Ð¸Ð² Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÑƒ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸
 		std::cin >> day;
 	}
 	std::string date = getDate(day);
 
-	std::cout << "Âûâåðèòå íàïðàâëåíèå:\n1) Ìîñêâà - Íèæíèé Íîâãîðîä\n2) Íèæíèé Íîâãîðîä - Ìîñêâà\n";
+	std::cout << "Ð’Ñ‹Ð²ÐµÑ€Ð¸Ñ‚Ðµ Ð½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ:\n1) ÐœÐ¾ÑÐºÐ²Ð° - ÐÐ¸Ð¶Ð½Ð¸Ð¹ ÐÐ¾Ð²Ð³Ð¾Ñ€Ð¾Ð´\n2) ÐÐ¸Ð¶Ð½Ð¸Ð¹ ÐÐ¾Ð²Ð³Ð¾Ñ€Ð¾Ð´ - ÐœÐ¾ÑÐºÐ²Ð°\n";
 	int roate(0);
 	while (roate < 1 || roate > 2)
 	{
-		std::cout << "Ðåéñ: ";
+		std::cout << "Ð ÐµÐ¹Ñ: ";
 		std::cin >> roate;
 	}
 	std::cout << '\n';
@@ -105,7 +105,7 @@ Ticket RailTicketOffice::newTicket()
 	int train, tmp(-1);
 	while (tmp == -1)
 	{
-		std::cout << "Âûáåðèòå íîìåð ïîåçäà: ";
+		std::cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¿Ð¾ÐµÐ·Ð´Ð°: ";
 		std::cin >> train;
 		for (int i = 0; i < 5; i++)
 			if (number[roate][i] == train)
@@ -118,7 +118,7 @@ Ticket RailTicketOffice::newTicket()
 	int carriage = railway[roate][day].carReservate(train, ticket.people());
 	if (carriage == -1)
 	{
-		std::cout << "Íåò ìåñò íà ýòîò ïîåçä\n";
+		std::cout << "ÐÐµÑ‚ Ð¼ÐµÑÑ‚ Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ð¿Ð¾ÐµÐ·Ð´\n";
 		return Ticket();
 	}
 	int** seats = __newArr(ticket.people());
@@ -129,11 +129,11 @@ Ticket RailTicketOffice::newTicket()
 		__deleteArr(seats, ticket.people());
 		return Ticket();
 	}
-	std::string flight1 = "Íèæíèé Íîâãîðîä", flight2 = "Ìîñêâà";
+	std::string flight1 = "ÐÐ¸Ð¶Ð½Ð¸Ð¹ ÐÐ¾Ð²Ð³Ð¾Ñ€Ð¾Ð´", flight2 = "ÐœÐ¾ÑÐºÐ²Ð°";
 	if (roate == 0)
 	{
-		flight1 = "Ìîñêâà";
-		flight2 = "Íèæíèé Íîâãîðîä";
+		flight1 = "ÐœÐ¾ÑÐºÐ²Ð°";
+		flight2 = "ÐÐ¸Ð¶Ð½Ð¸Ð¹ ÐÐ¾Ð²Ð³Ð¾Ñ€Ð¾Ð´";
 	}
 	std::cout << '\n';
 	ticket.newSeats(number[roate][train], time[roate][0][train], time[roate][1][train], carriage + 1, seats, flight1, flight2, date);
@@ -144,9 +144,9 @@ Ticket RailTicketOffice::newTicket()
 void RailTicketOffice::__printTable(const int route)
 {
 	if (route == 0)
-		std::cout << "Ðåéñ: Ìîñêâà - Íèæíèé Íîâãîðîä\n";
+		std::cout << "Ð ÐµÐ¹Ñ: ÐœÐ¾ÑÐºÐ²Ð° - ÐÐ¸Ð¶Ð½Ð¸Ð¹ ÐÐ¾Ð²Ð³Ð¾Ñ€Ð¾Ð´\n";
 	else
-		std::cout << "Ðåéñ: Íèæíèé Íîâãîðîä - Ìîñêâà\n";
+		std::cout << "Ð ÐµÐ¹Ñ: ÐÐ¸Ð¶Ð½Ð¸Ð¹ ÐÐ¾Ð²Ð³Ð¾Ñ€Ð¾Ð´ - ÐœÐ¾ÑÐºÐ²Ð°\n";
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << number[route][i] << ' ' << time[route][0][i] << " - " << time[route][1][i] << ' ';

@@ -1,24 +1,24 @@
-#pragma once
+п»ї#pragma once
 #include "GorkyRailway.h"
 #include "Ticket.h"
 #include <ctime>
 
 class RailTicketOffice
 {
-	GorkyRailway railway[2][30]; // 0 - Москва-НН, 1 - НН-Москва
-	int number[2][5];            // Номер поезда
-	std::string time[2][2][5];   // Время отправления-прибытия
+	GorkyRailway railway[2][30]; // 0 - РњРѕСЃРєРІР°-РќРќ, 1 - РќРќ-РњРѕСЃРєРІР°
+	int number[2][5];            // РќРѕРјРµСЂ РїРѕРµР·РґР°
+	std::string time[2][2][5];   // Р’СЂРµРјСЏ РѕС‚РїСЂР°РІР»РµРЅРёСЏ-РїСЂРёР±С‹С‚РёСЏ
 
 	Ticket ticket;
 	
 public:
 	RailTicketOffice(const std::string filename = "TimeTable.txt");
-	Ticket newTicket(); // Новый билет
-	void clearTicket(); // Отмена
+	Ticket newTicket(); // РќРѕРІС‹Р№ Р±РёР»РµС‚
+	void clearTicket(); // РћС‚РјРµРЅР°
 
 private:
-	void __readTable(const std::string filename = "TimeTable.txt");  // Расписание поездов
+	void __readTable(const std::string filename = "TimeTable.txt");  // Р Р°СЃРїРёСЃР°РЅРёРµ РїРѕРµР·РґРѕРІ
 	void __printTable(const int route);
-	bool payment() { return true; }   // Оплата (требует дополнительной банковской системы, сейчас будем учитывать, что оплата проходит всегда)
+	bool payment() { return true; }   // РћРїР»Р°С‚Р° (С‚СЂРµР±СѓРµС‚ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ Р±Р°РЅРєРѕРІСЃРєРѕР№ СЃРёСЃС‚РµРјС‹, СЃРµР№С‡Р°СЃ Р±СѓРґРµРј СѓС‡РёС‚С‹РІР°С‚СЊ, С‡С‚Рѕ РѕРїР»Р°С‚Р° РїСЂРѕС…РѕРґРёС‚ РІСЃРµРіРґР°)
 };
 

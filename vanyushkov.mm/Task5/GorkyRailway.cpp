@@ -1,4 +1,4 @@
-#include "GorkyRailway.h"
+ï»¿#include "GorkyRailway.h"
 
 GorkyRailway::GorkyRailway()
 {
@@ -31,37 +31,37 @@ int GorkyRailway::carReservate(const int train, const int passengers)
 			if (firmSV[i] >= passengers)
 			{
 				if (tmp == 0)
-					std::cout << "Íàëè÷èå ñâîáîäíûõ ìåñò:\n";
+					std::cout << "ĞĞ°Ğ»Ğ¸Ñ‡Ğ¸Ğµ ÑĞ²Ğ¾Ğ±Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ¼ĞµÑÑ‚:\n";
 				tmp++;
 				sv = i;
-				std::cout << "1 - ÑÂ\n";
+				std::cout << "1 - Ğ¡Ğ’\n";
 				break;
 			}
 		for (int i = 0; i < 6; i++)
 			if (firmCoupe[i][0] + firmCoupe[i][1] >= passengers)
 			{
 				if (tmp == 0)
-					std::cout << "Íàëè÷èå ñâîáîäíûõ ìåñò:\n";
+					std::cout << "ĞĞ°Ğ»Ğ¸Ñ‡Ğ¸Ğµ ÑĞ²Ğ¾Ğ±Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ¼ĞµÑÑ‚:\n";
 				tmp++;
 				coupe = i;
-				std::cout << "2 - Êóïå\n";
+				std::cout << "2 - ĞšÑƒĞ¿Ğµ\n";
 				break;
 			}
 		for (int i = 0; i < 4; i++)
 			if (firmReserved[i][0] + firmReserved[i][1] >= passengers)
 			{
 				if (tmp == 0)
-					std::cout << "Íàëè÷èå ñâîáîäíûõ ìåñò:\n";
+					std::cout << "ĞĞ°Ğ»Ğ¸Ñ‡Ğ¸Ğµ ÑĞ²Ğ¾Ğ±Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ¼ĞµÑÑ‚:\n";
 				tmp++;
 				reserved = i;
-				std::cout << "3 - Ïëàöêàğò\n";
+				std::cout << "3 - ĞŸĞ»Ğ°Ñ†ĞºĞ°Ñ€Ñ‚\n";
 				break;
 			}
 		if (tmp != 0)
 		{
 			while (!(sv != -1 && carriage == 1 || coupe != -1 && carriage == 2 || reserved != -1 && carriage == 3))
 			{
-				std::cout << "Âûáåğèòå òèï âàãîíà èç ïğåäñòàâëåííûõ: ";
+				std::cout << "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ Ñ‚Ğ¸Ğ¿ Ğ²Ğ°Ğ³Ğ¾Ğ½Ğ° Ğ¸Ğ· Ğ¿Ñ€ĞµĞ´ÑÑ‚Ğ°Ğ²Ğ»ĞµĞ½Ğ½Ñ‹Ñ…: ";
 				std::cin >> carriage;
 			}
 			if (carriage == 1)
@@ -94,10 +94,10 @@ int GorkyRailway::carReservate(const int train, const int passengers)
 			return reserved + 4;
 		if (type == 3)
 		{
-			std::cout << "1 - Êóïå\n2 - Ïëàöêàğò\n";
+			std::cout << "1 - ĞšÑƒĞ¿Ğµ\n2 - ĞŸĞ»Ğ°Ñ†ĞºĞ°Ñ€Ñ‚\n";
 			while (carriage < 1 || carriage > 2)
 			{
-				std::cout << "Âûáåğèòå òèï âàãîíà: ";
+				std::cout << "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ Ñ‚Ğ¸Ğ¿ Ğ²Ğ°Ğ³Ğ¾Ğ½Ğ°: ";
 				std::cin >> carriage;
 			}
 			if (carriage == 1)
@@ -126,11 +126,11 @@ void GorkyRailway::typeCar(const int train, const int passengers, const int carr
 		}
 		else if (carriage < 8)
 		{
-			std::cout << "Íèæíèå ìåñòà: " << firmCoupe[carriage][0] << "\nÂåğõíèå ìåñòà: " << firmCoupe[carriage][1] << '\n';
+			std::cout << "ĞĞ¸Ğ¶Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << firmCoupe[carriage][0] << "\nĞ’ĞµÑ€Ñ…Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << firmCoupe[carriage][1] << '\n';
 			int down(-1), up;
 			while ((down < 0 || down > firmCoupe[carriage][0] || down > passengers) && (firmCoupe[carriage][1] - passengers + down >= 0))
 			{
-				std::cout << "Âûáåğèòå êîëè÷åñòâî íèæíèõ ìåñò: ";
+				std::cout << "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ½Ğ¸Ğ¶Ğ½Ğ¸Ñ… Ğ¼ĞµÑÑ‚: ";
 				std::cin >> down;
 			}
 			up = passengers - down;
@@ -143,11 +143,11 @@ void GorkyRailway::typeCar(const int train, const int passengers, const int carr
 		}
 		else
 		{
-			std::cout << "Íèæíèå ìåñòà: " << firmReserved[carriage][0] << "\nÂåğõíèå ìåñòà: " << firmReserved[carriage][1] << '\n';
+			std::cout << "ĞĞ¸Ğ¶Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << firmReserved[carriage][0] << "\nĞ’ĞµÑ€Ñ…Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << firmReserved[carriage][1] << '\n';
 			int down(-1), up;
 			while ((down < 0 || down > firmReserved[carriage][0] || down > passengers) && (firmReserved[carriage][1] - passengers + down >= 0))
 			{
-				std::cout << "Âûáåğèòå êîëè÷åñòâî íèæíèõ ìåñò: ";
+				std::cout << "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ½Ğ¸Ğ¶Ğ½Ğ¸Ñ… Ğ¼ĞµÑÑ‚: ";
 				std::cin >> down;
 			}
 			up = passengers - down;
@@ -163,11 +163,11 @@ void GorkyRailway::typeCar(const int train, const int passengers, const int carr
 	{
 		if (carriage < 4)
 		{
-			std::cout << "Íèæíèå ìåñòà: " << fastCoupe[carriage][0] << "\nÂåğõíèå ìåñòà: " << fastCoupe[carriage][1] << '\n';
+			std::cout << "ĞĞ¸Ğ¶Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << fastCoupe[carriage][0] << "\nĞ’ĞµÑ€Ñ…Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << fastCoupe[carriage][1] << '\n';
 			int down(-1), up;
 			while ((down < 0 || down > fastCoupe[carriage][0] || down > passengers) && (fastCoupe[carriage][1] - passengers + down >= 0))
 			{
-				std::cout << "Âûáåğèòå êîëè÷åñòâî íèæíèõ ìåñò: ";
+				std::cout << "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ½Ğ¸Ğ¶Ğ½Ğ¸Ñ… Ğ¼ĞµÑÑ‚: ";
 				std::cin >> down;
 			}
 			up = passengers - down;
@@ -180,11 +180,11 @@ void GorkyRailway::typeCar(const int train, const int passengers, const int carr
 		}
 		else
 		{
-			std::cout << "Íèæíèå ìåñòà: " << fastReserved[carriage][0] << "\nÂåğõíèå ìåñòà: " << fastReserved[carriage][1] << '\n';
+			std::cout << "ĞĞ¸Ğ¶Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << fastReserved[carriage][0] << "\nĞ’ĞµÑ€Ñ…Ğ½Ğ¸Ğµ Ğ¼ĞµÑÑ‚Ğ°: " << fastReserved[carriage][1] << '\n';
 			int down(-1), up;
 			while ((down < 0 || down > fastReserved[carriage][0] || down > passengers) && (fastReserved[carriage][1] - passengers + down >= 0))
 			{
-				std::cout << "Âûáåğèòå êîëè÷åñòâî íèæíèõ ìåñò: ";
+				std::cout << "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ½Ğ¸Ğ¶Ğ½Ğ¸Ñ… Ğ¼ĞµÑÑ‚: ";
 				std::cin >> down;
 			}
 			up = passengers - down;

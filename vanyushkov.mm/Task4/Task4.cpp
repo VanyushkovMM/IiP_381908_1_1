@@ -1,17 +1,17 @@
-#include "FilmLibrary.h"
+п»ї#include "FilmLibrary.h"
 
-// Информация по работе с инструментами
+// РРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЂР°Р±РѕС‚Рµ СЃ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё
 void info()
 {
-    std::cout << "    /add - Добавить фильм\n    /change - изменить фильм по названию\n"
-        << "    /search - найти фильм по названию и году\n    /producer - выдать фильмы заданного режиссёра\n"
-        << "    /year - выдать фильмы за указанный год\n    /fund - выдать указанное количество самых кассовых фильмов\n"
-        << "    /fundyear - выдать указанное количество самых кассовых фильмов за указанный год\n"
-        << "    /count - выдать количество фильмов в библиотеке\n    /delete - удалить фильм по названию\n"
-        << "    /print - вывести весь список фильмов\n    /clear - очистить экран\n    /help - помощь\n    /exit - выход\n";
+    std::cout << "    /add - Р”РѕР±Р°РІРёС‚СЊ С„РёР»СЊРј\n    /change - РёР·РјРµРЅРёС‚СЊ С„РёР»СЊРј РїРѕ РЅР°Р·РІР°РЅРёСЋ\n"
+        << "    /search - РЅР°Р№С‚Рё С„РёР»СЊРј РїРѕ РЅР°Р·РІР°РЅРёСЋ Рё РіРѕРґСѓ\n    /producer - РІС‹РґР°С‚СЊ С„РёР»СЊРјС‹ Р·Р°РґР°РЅРЅРѕРіРѕ СЂРµР¶РёСЃСЃС‘СЂР°\n"
+        << "    /year - РІС‹РґР°С‚СЊ С„РёР»СЊРјС‹ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РіРѕРґ\n    /fund - РІС‹РґР°С‚СЊ СѓРєР°Р·Р°РЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР°РјС‹С… РєР°СЃСЃРѕРІС‹С… С„РёР»СЊРјРѕРІ\n"
+        << "    /fundyear - РІС‹РґР°С‚СЊ СѓРєР°Р·Р°РЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР°РјС‹С… РєР°СЃСЃРѕРІС‹С… С„РёР»СЊРјРѕРІ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РіРѕРґ\n"
+        << "    /count - РІС‹РґР°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ С„РёР»СЊРјРѕРІ РІ Р±РёР±Р»РёРѕС‚РµРєРµ\n    /delete - СѓРґР°Р»РёС‚СЊ С„РёР»СЊРј РїРѕ РЅР°Р·РІР°РЅРёСЋ\n"
+        << "    /print - РІС‹РІРµСЃС‚Рё РІРµСЃСЊ СЃРїРёСЃРѕРє С„РёР»СЊРјРѕРІ\n    /clear - РѕС‡РёСЃС‚РёС‚СЊ СЌРєСЂР°РЅ\n    /help - РїРѕРјРѕС‰СЊ\n    /exit - РІС‹С…РѕРґ\n";
 }
 
-// Очистка экрана
+// РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
 void clrscr()
 {
     HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -39,7 +39,7 @@ void clrscr()
     FillConsoleOutputCharacter(Console, ' ', width * height, zpos, &Count);
 }
 
-// Обработка команд
+// РћР±СЂР°Р±РѕС‚РєР° РєРѕРјР°РЅРґ
 void check(std::string& str)
 {
     int i = 0;
@@ -51,7 +51,7 @@ void check(std::string& str)
     }
 }
 
-// Переход в новую строку (считывание мусора)
+// РџРµСЂРµС…РѕРґ РІ РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ (СЃС‡РёС‚С‹РІР°РЅРёРµ РјСѓСЃРѕСЂР°)
 void bin(std::istream& in)
 {
     std::string bin;
@@ -60,21 +60,21 @@ void bin(std::istream& in)
 
 int main()
 {
-    // Добавление кириллицы
+    // Р”РѕР±Р°РІР»РµРЅРёРµ РєРёСЂРёР»Р»РёС†С‹
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    std::cout << "Подготовка к работе... ";
+    std::cout << "РџРѕРґРіРѕС‚РѕРІРєР° Рє СЂР°Р±РѕС‚Рµ... ";
 
     std::string command, filename;
     FilmLibrary library;
 
-    filename = "Фильмы.txt";
+    filename = "Р¤РёР»СЊРјС‹.txt";
 
     ReadFilms(library, filename);
 
     clrscr();
-    std::cout << "/help - помощь\n    Введите команду: ";
+    std::cout << "/help - РїРѕРјРѕС‰СЊ\n    Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ: ";
     std::cin >> command;
     check(command);
     while (command != "/exit")
@@ -86,95 +86,95 @@ int main()
         else if (command == "/add")
         {
             if (library.AddFilm())
-                std::cout << "    Готово!\n";
+                std::cout << "    Р“РѕС‚РѕРІРѕ!\n";
             else
-                std::cout << "    Такой фильм уже есть!\n";
+                std::cout << "    РўР°РєРѕР№ С„РёР»СЊРј СѓР¶Рµ РµСЃС‚СЊ!\n";
         }
         else if (command == "/change")
         {
             std::string name;
             bin(std::cin);
-            std::cout << "Введите название: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ: ";
             std::getline(std::cin, name);
             if (library.ChangeFilm(name))
-                std::cout << "    Готово!\n";
+                std::cout << "    Р“РѕС‚РѕРІРѕ!\n";
             else
-                std::cout << "    Фильм не найден!\n";
+                std::cout << "    Р¤РёР»СЊРј РЅРµ РЅР°Р№РґРµРЅ!\n";
         }
         else if (command == "/search")
         {
             std::string name;
             int year;
             bin(std::cin);
-            std::cout << "Введите название фильма: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ С„РёР»СЊРјР°: ";
             std::getline(std::cin, name);
-            std::cout << "Введите год премьеры фильма: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РіРѕРґ РїСЂРµРјСЊРµСЂС‹ С„РёР»СЊРјР°: ";
             std::cin >> year;
             if (!library.SearchFilm(name, year).Write())
-                std::cout << "Фильм не найден!\n";
+                std::cout << "Р¤РёР»СЊРј РЅРµ РЅР°Р№РґРµРЅ!\n";
         }
         else if (command == "/producer")
         {
             std::string producer;
             bin(std::cin);
-            std::cout << "Введите режиссера: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ СЂРµР¶РёСЃСЃРµСЂР°: ";
             std::getline(std::cin, producer);
             if (!library.ProducerFilms(producer).PrintLibrary())
-                std::cout << "Фильмы данного режиссера не найдены!\n";
+                std::cout << "Р¤РёР»СЊРјС‹ РґР°РЅРЅРѕРіРѕ СЂРµР¶РёСЃСЃРµСЂР° РЅРµ РЅР°Р№РґРµРЅС‹!\n";
         }
         else if (command == "/year")
         {
             int year;
-            std::cout << "Введите год: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РіРѕРґ: ";
             std::cin >> year;
             if (!library.YearFilms(year).PrintLibrary())
-                std::cout << "Фильмов за указанный год нет!\n";
+                std::cout << "Р¤РёР»СЊРјРѕРІ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РіРѕРґ РЅРµС‚!\n";
         }
         else if (command == "/fund")
         {
             int fund;
-            std::cout << "Введите количество фильмов: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ С„РёР»СЊРјРѕРІ: ";
             std::cin >> fund;
             if (!library.FundFilms(fund).PrintLibrary())
-                std::cout << "    Нет фильмов!\n";
+                std::cout << "    РќРµС‚ С„РёР»СЊРјРѕРІ!\n";
         }
         else if (command == "/fundyear")
         {
             int year, fund;
-            std::cout << "Введите количество фильмов и год: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ С„РёР»СЊРјРѕРІ Рё РіРѕРґ: ";
             std::cin >> fund >> year;
             if (!library.FundYearFilms(fund, year).PrintLibrary())
-                std::cout << "Фильмов за указанный год нет!\n";
+                std::cout << "Р¤РёР»СЊРјРѕРІ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РіРѕРґ РЅРµС‚!\n";
         }
         else if (command == "/count")
         {
-            std::cout << "Количество фильмов: " << library.CountFilms() << std::endl;
+            std::cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ С„РёР»СЊРјРѕРІ: " << library.CountFilms() << std::endl;
         }
         else if (command == "/delete")
         {
             std::string name;
             bin(std::cin);
-            std::cout << "Введите название фильма: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ С„РёР»СЊРјР°: ";
             std::getline(std::cin, name);
             if (library.DeleteFilm(name))
-                std::cout << "    Готово!\n";
+                std::cout << "    Р“РѕС‚РѕРІРѕ!\n";
             else
-                std::cout << "    Фильм для удаления не найден!\n";
+                std::cout << "    Р¤РёР»СЊРј РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РЅРµ РЅР°Р№РґРµРЅ!\n";
         }
         else if (command == "/print")
         {
             if (!library.PrintLibrary())
-                std::cout << "    Нет фильмов!\n";
+                std::cout << "    РќРµС‚ С„РёР»СЊРјРѕРІ!\n";
         }
         else
-            std::cout << "    Данной команды нет!\n";
-        std::cout << "    Введите команду: ";
+            std::cout << "    Р”Р°РЅРЅРѕР№ РєРѕРјР°РЅРґС‹ РЅРµС‚!\n";
+        std::cout << "    Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ: ";
         std::cin >> command;
         check(command);
     }
 
     clrscr();
-    std::cout << "Завершение работы...\n";
+    std::cout << "Р—Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹...\n";
     SaveFilms(library, filename);
 
     return 0;

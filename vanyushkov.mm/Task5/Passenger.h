@@ -1,21 +1,21 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <fstream>
 #include <Windows.h>
 class Passenger
 {
-	std::string surname;    // Ôàìèëèÿ
-	std::string name;       // Èìÿ
-	std::string patronymic; // Îò÷åñòâî
-	std::string date;       // Äàòà îòïðàâëåíèÿ
-	std::string depTime;    // Âðåìÿ îòïðàâëåíèÿ
-	std::string arrTime;    // Âðåìÿ ïðèáûòèÿ
-	int train;              // Íîìåð ïîåçäà
-	int carriage;           // Íîìåð âàãîíà
-	int typeCar;            // Òèï âàãîíà
-	int seat;               // Ìåñòî
-	std::string departure;  // Ñòàíöèÿ îòïðàâëåíèÿ
-	std::string arrival;    // Ñòàíöèÿ ïðèáûòèÿ
+	std::string surname;    // Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ
+	std::string name;       // Ð˜Ð¼Ñ
+	std::string patronymic; // ÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾
+	std::string date;       // Ð”Ð°Ñ‚Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ñ
+	std::string depTime;    // Ð’Ñ€ÐµÐ¼Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ñ
+	std::string arrTime;    // Ð’Ñ€ÐµÐ¼Ñ Ð¿Ñ€Ð¸Ð±Ñ‹Ñ‚Ð¸Ñ
+	int train;              // ÐÐ¾Ð¼ÐµÑ€ Ð¿Ð¾ÐµÐ·Ð´Ð°
+	int carriage;           // ÐÐ¾Ð¼ÐµÑ€ Ð²Ð°Ð³Ð¾Ð½Ð°
+	int typeCar;            // Ð¢Ð¸Ð¿ Ð²Ð°Ð³Ð¾Ð½Ð°
+	int seat;               // ÐœÐµÑÑ‚Ð¾
+	std::string departure;  // Ð¡Ñ‚Ð°Ð½Ñ†Ð¸Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ñ
+	std::string arrival;    // Ð¡Ñ‚Ð°Ð½Ñ†Ð¸Ñ Ð¿Ñ€Ð¸Ð±Ñ‹Ñ‚Ð¸Ñ
 
 public:
 	Passenger(const std::string surname = "", const std::string name = "", const std::string patronymic = "");
@@ -26,7 +26,7 @@ public:
 	void newSeatInfo(const int train, const std::string depTime, const std::string arrTime, const int carriage, const int typeCar,
 		const int seat, const std::string departure, const std::string arrival, const std::string date);
 
-	// Ââîä-âûâîä êîíñîëè
+	// Ð’Ð²Ð¾Ð´-Ð²Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð½ÑÐ¾Ð»Ð¸
 	friend std::istream& operator>> (std::istream& stream, Passenger& passenger);
 	friend std::ostream& operator<< (std::ostream& stream, const Passenger& passenger);
 };

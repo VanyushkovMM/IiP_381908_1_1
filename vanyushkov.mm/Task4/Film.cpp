@@ -1,6 +1,6 @@
-#include "Film.h"
+п»ї#include "Film.h"
 
-// По умолчанию
+// РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 Film::Film()
 {
 	name = "";
@@ -11,13 +11,13 @@ Film::Film()
 	fundraising = 0;
 }
 
-// Копирование
+// РљРѕРїРёСЂРѕРІР°РЅРёРµ
 Film::Film(const Film& film)
 {
 	*this = film;
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 Film::~Film()
 {
 	name = "";
@@ -28,7 +28,7 @@ Film::~Film()
 	fundraising = 0;
 }
 
-// Присваивание
+// РџСЂРёСЃРІР°РёРІР°РЅРёРµ
 Film& Film::operator=(const Film& film)
 {
 	name = film.name;
@@ -42,7 +42,7 @@ Film& Film::operator=(const Film& film)
 	return *this;
 }
 
-// Заполнение информации о фильме
+// Р—Р°РїРѕР»РЅРµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ
 void Film::NewFilm(const std::string _name, const std::string _producer, const std::string _screenwriter, 
 	const std::string _composer, const int _day, const int _mount, const int _year, const ll _fundraising)
 {
@@ -56,14 +56,14 @@ void Film::NewFilm(const std::string _name, const std::string _producer, const s
 	fundraising = _fundraising;
 }
 
-// Инициализация
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
 Film::Film(const std::string _name, const std::string _producer, const std::string _screenwriter, 
 	const std::string _composer, const int _day, const int _mount, const int _year, const ll _fundraising)
 {
 	this->NewFilm(_name, _producer, _screenwriter, _composer, _day, _mount, _year, _fundraising);
 }
 
-// Считывание строки
+// РЎС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂРѕРєРё
 std::string readString(const std::string comment)
 {
 	std::string str;
@@ -72,7 +72,7 @@ std::string readString(const std::string comment)
 	return str;
 }
 
-// Изменение числовой информации в фильме (если строка не пуста)
+// РР·РјРµРЅРµРЅРёРµ С‡РёСЃР»РѕРІРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РІ С„РёР»СЊРјРµ (РµСЃР»Рё СЃС‚СЂРѕРєР° РЅРµ РїСѓСЃС‚Р°)
 ll newNumber(const ll num, const std::string comment)
 {
 	std::string str = readString(comment);
@@ -81,7 +81,7 @@ ll newNumber(const ll num, const std::string comment)
 	return num;
 }
 
-// Изменение текстовой информации о фильме (если строка не пуста)
+// РР·РјРµРЅРµРЅРёРµ С‚РµРєСЃС‚РѕРІРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ (РµСЃР»Рё СЃС‚СЂРѕРєР° РЅРµ РїСѓСЃС‚Р°)
 std::string newString(const std::string str, const std::string comment)
 {
 	std::string newStr = readString(comment);
@@ -90,29 +90,29 @@ std::string newString(const std::string str, const std::string comment)
 	return str;
 }
 
-// Считывание информации о фильме с консоли
+// РЎС‡РёС‚С‹РІР°РЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ СЃ РєРѕРЅСЃРѕР»Рё
 Film& Film::Read()
 {
-	name = newString(name, "Название");
-	producer = newString(producer, "Режиссёр");
-	screenwriter = newString(screenwriter, "Сценарист");
-	composer = newString(composer, "Композитор");
-	day = (int)newNumber(day, "День выхода");
-	mount = (int)newNumber(mount, "Месяц выхода");
-	year = (int)newNumber(year, "Год выхода");
-	fundraising = newNumber(fundraising, "Сборы");
+	name = newString(name, "РќР°Р·РІР°РЅРёРµ");
+	producer = newString(producer, "Р РµР¶РёСЃСЃС‘СЂ");
+	screenwriter = newString(screenwriter, "РЎС†РµРЅР°СЂРёСЃС‚");
+	composer = newString(composer, "РљРѕРјРїРѕР·РёС‚РѕСЂ");
+	day = (int)newNumber(day, "Р”РµРЅСЊ РІС‹С…РѕРґР°");
+	mount = (int)newNumber(mount, "РњРµСЃСЏС† РІС‹С…РѕРґР°");
+	year = (int)newNumber(year, "Р“РѕРґ РІС‹С…РѕРґР°");
+	fundraising = newNumber(fundraising, "РЎР±РѕСЂС‹");
 	return *this;
 }
 
-// Вывод информации о фильме в консоль
+// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ РІ РєРѕРЅСЃРѕР»СЊ
 bool Film::Write()
 {
 	if (name == "")
 		return false;
-	std::cout << "Название:    " << name << "\nРежиссер:    " << producer
-		<< "\nСценарист:   " << screenwriter << "\nКомпозитор:  " << composer
-		<< "\nДата выхода: " << day << "." << mount << "." << year
-		<< "\nСборы:       " << fundraising << "р.\n";
+	std::cout << "РќР°Р·РІР°РЅРёРµ:    " << name << "\nР РµР¶РёСЃСЃРµСЂ:    " << producer
+		<< "\nРЎС†РµРЅР°СЂРёСЃС‚:   " << screenwriter << "\nРљРѕРјРїРѕР·РёС‚РѕСЂ:  " << composer
+		<< "\nР”Р°С‚Р° РІС‹С…РѕРґР°: " << day << "." << mount << "." << year
+		<< "\nРЎР±РѕСЂС‹:       " << fundraising << "СЂ.\n";
 	return true;
 }
 
@@ -123,7 +123,7 @@ bool Film::operator!=(const Film& film)
 	return true;
 }
 
-// swap фильмов
+// swap С„РёР»СЊРјРѕРІ
 void swap(Film& f1, Film& f2)
 {
 	Film tmp = f1;
@@ -131,7 +131,7 @@ void swap(Film& f1, Film& f2)
 	f2 = tmp;
 }
 
-// Считывание информации о фильме с файла
+// РЎС‡РёС‚С‹РІР°РЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ СЃ С„Р°Р№Р»Р°
 std::istream& operator>> (std::istream& stream, Film& film)
 {
 	std::getline(stream, film.name);
@@ -142,7 +142,7 @@ std::istream& operator>> (std::istream& stream, Film& film)
 	return stream;
 }
 
-// Вывод информации о фильме в файл
+// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ РІ С„Р°Р№Р»
 std::ostream& operator<< (std::ostream& stream, const Film& film)
 {
 	stream << film.name << std::endl << film.producer

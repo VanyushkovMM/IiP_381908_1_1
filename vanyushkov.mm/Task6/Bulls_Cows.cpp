@@ -1,13 +1,13 @@
-#include "Bulls_Cows.h"
+п»ї#include "Bulls_Cows.h"
 
-// Конструктор
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 Bulls_Cows::Bulls_Cows()
 {
 	length = 0;
 	number = nullptr;
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 Bulls_Cows::~Bulls_Cows()
 {
 	if (length > 0)
@@ -15,7 +15,7 @@ Bulls_Cows::~Bulls_Cows()
 	length = 0;
 }
 
-// Новое число (в стандартной игре длина слова 4)
+// РќРѕРІРѕРµ С‡РёСЃР»Рѕ (РІ СЃС‚Р°РЅРґР°СЂС‚РЅРѕР№ РёРіСЂРµ РґР»РёРЅР° СЃР»РѕРІР° 4)
 bool Bulls_Cows::newNumber(const int length)
 {
 	if (length < 1 || length > 10)
@@ -36,7 +36,7 @@ bool Bulls_Cows::newNumber(const int length)
 	return true;
 }
 
-// Проверка введенного числа пользователем
+// РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅРѕРіРѕ С‡РёСЃР»Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 bool Bulls_Cows::checkCorrect(const std::string num)
 {
 	if (num.length() != length)
@@ -48,7 +48,7 @@ bool Bulls_Cows::checkCorrect(const std::string num)
 	return true;
 }
 
-// Проверка на конец игры и возврат количества быков и коров
+// РџСЂРѕРІРµСЂРєР° РЅР° РєРѕРЅРµС† РёРіСЂС‹ Рё РІРѕР·РІСЂР°С‚ РєРѕР»РёС‡РµСЃС‚РІР° Р±С‹РєРѕРІ Рё РєРѕСЂРѕРІ
 bool Bulls_Cows::checkBullCow(std::string num, int& bull, int& cow)
 {
 	cow = bull = 0;

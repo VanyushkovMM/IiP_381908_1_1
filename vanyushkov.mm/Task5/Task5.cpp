@@ -1,13 +1,13 @@
-#include "RailTicketOffice.h"
+п»ї#include "RailTicketOffice.h"
 
-// Информация по работе с инструментами
+// РРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЂР°Р±РѕС‚Рµ СЃ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё
 void info()
 {
-    std::cout << "    /help - помощь\n    /new - создание нового билета\n"
-        << "    /clear - очистка экрана\n    /print - вывод билета\n    /exit - выход\n";
+    std::cout << "    /help - РїРѕРјРѕС‰СЊ\n    /new - СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ Р±РёР»РµС‚Р°\n"
+        << "    /clear - РѕС‡РёСЃС‚РєР° СЌРєСЂР°РЅР°\n    /print - РІС‹РІРѕРґ Р±РёР»РµС‚Р°\n    /exit - РІС‹С…РѕРґ\n";
 }
 
-// Очистка экрана
+// РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
 void clrscr()
 {
     HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -35,7 +35,7 @@ void clrscr()
     FillConsoleOutputCharacter(Console, ' ', width * height, zpos, &Count);
 }
 
-// Обработка команд
+// РћР±СЂР°Р±РѕС‚РєР° РєРѕРјР°РЅРґ
 void check(std::string& str)
 {
     int i = 0;
@@ -49,7 +49,7 @@ void check(std::string& str)
 
 int main()
 {
-	// Добавление кириллицы
+	// Р”РѕР±Р°РІР»РµРЅРёРµ РєРёСЂРёР»Р»РёС†С‹
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	setlocale(LC_ALL, "");
@@ -59,7 +59,7 @@ int main()
     std::string command;
 
     clrscr();
-    std::cout << "/help - помощь\n    Введите команду: ";
+    std::cout << "/help - РїРѕРјРѕС‰СЊ\n    Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ: ";
     std::cin >> command;
 
     check(command);
@@ -75,18 +75,18 @@ int main()
             ticket = office.newTicket();
             clrscr();
             if (!(ticket == Ticket()))
-                std::cout << "Билет сформирован!\n";
+                std::cout << "Р‘РёР»РµС‚ СЃС„РѕСЂРјРёСЂРѕРІР°РЅ!\n";
         }
         else if (command == "/print")
         {
             if (!ticket.Print())
-                std::cout << "Нет информации о билетах";
+                std::cout << "РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё Рѕ Р±РёР»РµС‚Р°С…";
             else
                 ticket.saveTicket();
         }
         else
-            std::cout << "    Данной команды нет!\n";
-        std::cout << "    Введите команду: ";
+            std::cout << "    Р”Р°РЅРЅРѕР№ РєРѕРјР°РЅРґС‹ РЅРµС‚!\n";
+        std::cout << "    Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ: ";
         std::cin >> command;
         check(command);
     }
